@@ -1,2 +1,1 @@
-from compare import app
-
+from api.compare import app

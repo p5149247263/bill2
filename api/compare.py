@@ -1,6 +1,6 @@
 from flask import Flask, Response, jsonify, request
 
-from gas_bill_core import build_comparison_table, build_comparison_xlsx
+from api.gas_bill_core import build_comparison_table, build_comparison_xlsx
 
 app = Flask(__name__)
 
