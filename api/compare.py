@@ -1,8 +1,26 @@
-from flask import Flask, Response, jsonify, request
+from pathlib import Path
+
+from flask import Flask, Response, jsonify, request, send_from_directory
 
 from api.gas_bill_core import build_comparison_table, build_comparison_xlsx
 
 app = Flask(__name__)
+PUBLIC_DIR = Path(__file__).resolve().parent.parent / "public"
+
+
+@app.get("/")
+def home():
+    return send_from_directory(PUBLIC_DIR, "index.html")
+
+
+@app.get("/app.js")
+def app_js():
+    return send_from_directory(PUBLIC_DIR, "app.js")
+
+
+@app.get("/styles.css")
+def styles_css():
+    return send_from_directory(PUBLIC_DIR, "styles.css")
 
 
 @app.get("/api/health")
